@@ -105,10 +105,10 @@ function App() {
     <main className="app">
       <header className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Task management dashboard</p>
-          <h1>BASIC CRUD</h1>
+          <p className="eyebrow">Note management dashboard</p>
+          <h1>NOTES</h1>
           <p className="hero-text">
-            A clean React interface for creating, updating, and deleting tasks.
+            React interface for creating, updating, and deleting notes.
           </p>
         </div>
         <div className="hero-chip">
@@ -132,7 +132,7 @@ function App() {
         />
         <div className="actions">
           <button type="submit">
-            {editingId !== null ? 'Update Item' : 'Add Item'}
+            {editingId !== null ? 'Update Item' : 'Add Notes'}
           </button>
           {editingId !== null && (
             <button type="button" className="secondary" onClick={resetForm}>
