@@ -1,0 +1,94 @@
+.app {
+    width: min(860px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0 0 16px;
+    text-align: left;
+}
+
+.item-form {
+    display: grid;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid #d6dce5;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+input,
+textarea,
+button {
+    font: inherit;
+}
+
+input,
+textarea {
+    border: 1px solid #c2cbd8;
+    border-radius: 8px;
+    padding: 10px 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    background: #1e66d0;
+    color: #ffffff;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+button.secondary {
+    background: #5b6678;
+}
+
+button.danger {
+    background: #c62828;
+}
+
+.error {
+    color: #c62828;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.item-list {
+    display: grid;
+    gap: 12px;
+}
+
+.item-card {
+    border: 1px solid #d6dce5;
+    border-radius: 12px;
+    padding: 14px;
+    background: #ffffff;
+    text-align: left;
+}
+
+.item-card h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.item-card p {
+    margin: 0 0 10px;
+    color: #465161;
+}
+
+@media (max-width: 640px) {
+    .app {
+        padding: 14px;
+    }
+}
