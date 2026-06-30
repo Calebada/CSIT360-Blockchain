@@ -102,97 +102,123 @@ function App() {
   }
 
   return (
-    <main className="app">
-      <header className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Note management dashboard</p>
-          <h1>NOTES</h1>
-          <p className="hero-text">
-            React interface for creating, updating, and deleting notes.
-          </p>
-        </div>
-        <div className="hero-chip">
-          <span className="chip-label">Saved items</span>
-          <strong>{itemsCount}</strong>
-        </div>
-      </header>
+    <main className="app-shell">
+      <section className="workspace-card">
+        <header className="hero">
+          <div className="hero-copy">
+            <h1>Notes Application</h1>
+            <p className="hero-text">
+              Capture quick thoughts, plans, and reminders in a layout that feels a little more considered.
+            </p>
+          </div>
 
-      <form className="item-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-        <textarea
-          rows="3"
-          placeholder="Description"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-        <div className="actions">
-          <button type="submit">
-            {editingId !== null ? 'Update Item' : 'Add Notes'}
-          </button>
-          {editingId !== null && (
-            <button type="button" className="secondary" onClick={resetForm}>
-              Cancel Edit
-            </button>
-          )}
-        </div>
-      </form>
+          <div className="hero-meta">
+            <div className="meta-pill">
+              <span className="meta-label">Saved notes</span>
+              <strong>{itemsCount}</strong>
+            </div>
+            <div className="meta-pill meta-pill-soft">
+              <span className="meta-label">Status</span>
+              <strong>{itemsCount ? 'Active' : 'Fresh start'}</strong>
+            </div>
+          </div>
+        </header>
 
-      {error && <p className="error">{error}</p>}
+        <div className="workspace-grid">
+          <form className="composer-card" onSubmit={handleSubmit}>
+            <div className="card-heading">
+              <div>
+                <p className="section-kicker">New note</p>
+                <h2>{editingId !== null ? 'Refine this note' : 'Write something down'}</h2>
+              </div>
+           
+            </div>
 
-      {loading ? (
-        <p className="status">Loading items...</p>
-      ) : (
-        <section className="table-shell" aria-label="Items table">
-          {items.length === 0 ? (
-            <p className="status">No items yet. Add your first task above.</p>
-          ) : (
-            <table className="items-table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th className="actions-col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
+            <label className="field">
+              <span>Title</span>
+              <input
+                type="text"
+                placeholder="What is this about?"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+              />
+            </label>
+
+            <label className="field">
+              <span>Description</span>
+              <textarea
+                rows="4"
+                placeholder="Add a few details while they are still fresh."
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+              />
+            </label>
+
+            <div className="actions">
+              <button type="submit">
+                {editingId !== null ? 'Save changes' : 'Add note'}
+              </button>
+              {editingId !== null && (
+                <button type="button" className="secondary" onClick={resetForm}>
+                  Cancel
+                </button>
+              )}
+            </div>
+          </form>
+
+          <section className="notes-card" aria-label="Notes list">
+            <div className="card-heading">
+              <div>
+                <p className="section-kicker">Recent notes</p>
+                <h2>Your collection</h2>
+              </div>
+            </div>
+
+            {error && <p className="error">{error}</p>}
+
+            {loading ? (
+              <p className="status">Loading your notes...</p>
+            ) : items.length === 0 ? (
+              <div className="empty-state">
+                <p className="empty-title">Nothing here yet</p>
+                <p className="empty-copy">Start with one note and keep your thoughts together.</p>
+              </div>
+            ) : (
+              <div className="notes-list">
                 {items.map((item) => (
-                  <tr key={item.id}>
-                    <td className="title-cell">{item.title}</td>
-                    <td>{item.description || 'No description'}</td>
-                    <td className="actions-cell">
-                      <div className="row-actions">
-                        <button
-                          type="button"
-                          className="icon-btn edit-btn"
-                          onClick={() => handleEdit(item)}
-                          aria-label={`Edit ${item.title}`}
-                          title="Edit"
-                        >
-                          <PencilIcon />
-                        </button>
-                        <button
-                          type="button"
-                          className="icon-btn delete-btn"
-                          onClick={() => handleDelete(item.id)}
-                          aria-label={`Delete ${item.title}`}
-                          title="Delete"
-                        >
-                          <TrashIcon />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                  <article className="note-card" key={item.id}>
+                    <div className="note-main">
+                      <h3>{item.title}</h3>
+                      <p>{item.description || 'No description yet.'}</p>
+                    </div>
+
+                    <div className="row-actions">
+                      <button
+                        type="button"
+                        className="icon-btn edit-btn"
+                        onClick={() => handleEdit(item)}
+                        aria-label={`Edit ${item.title}`}
+                        title="Edit"
+                      >
+                        <PencilIcon />
+                      </button>
+                      <button
+                        type="button"
+                        className="icon-btn delete-btn"
+                        onClick={() => handleDelete(item.id)}
+                        aria-label={`Delete ${item.title}`}
+                        title="Delete"
+                      >
+                        <TrashIcon />
+                      </button>
+                    </div>
+                  </article>
                 ))}
-              </tbody>
-            </table>
-          )}
-        </section>
-      )}
+              </div>
+            )}
+          </section>
+        </div>
+      </section>
     </main>
   )
 }

@@ -1,13 +1,12 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap');
-
 :root {
     font-family: 'Manrope', sans-serif;
-    color: #0f172a;
+    color: #23211c;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #ffffff;
+    background: #f7efe4;
 }
 
 * {
@@ -17,24 +16,25 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background: #ffffff;
+    background: linear-gradient(180deg, #f7efe4 0%, #f4e9db 100%);
 }
 
 #root {
     min-height: 100vh;
-    background: #ffffff;
+    background: transparent;
 }
 
 h1,
-h2 {
+h2,
+h3 {
     font-family: 'Fraunces', serif;
-    color: #0f172a;
+    color: #23211c;
 }
 
 h1 {
-    font-size: clamp(2rem, 5vw, 3.3rem);
+    font-size: clamp(2rem, 5vw, 3.2rem);
     letter-spacing: -0.03em;
-    line-height: 1.05;
+    line-height: 1.04;
 }
 
 p {
