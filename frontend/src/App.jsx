@@ -1,6 +1,8 @@
 ﻿import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
+import WeatherBackground from './components/WeatherBackground.jsx'
+import CalendarWidget from './components/CalendarWidget.jsx'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
@@ -241,6 +243,8 @@ function App() {
     }
   }
 
+
+
   const handleToggleFavorite = async (item) => {
     console.log('Toggling favorite for:', item);
     try {
@@ -259,7 +263,10 @@ function App() {
   }
 
   return (
-    <main className="app-shell">
+    <div className="app-root">
+      <WeatherBackground showControl />
+
+      <main className="app-shell">
       <section className="workspace-card">
         <header className="hero">
           <div className="hero-copy">
@@ -405,7 +412,12 @@ function App() {
             )}
           </section>
         </div>
+
+        <CalendarWidget defaultCountryCode="PH" />
       </section>
+
+
+      
 
       <ConfirmationModal
         isOpen={confirmDelete !== null}
@@ -426,7 +438,8 @@ function App() {
         setTempTitle={setTempTitle}
         setTempDescription={setTempDescription}
       />
-    </main>
+      </main>
+    </div>
   )
 }
 

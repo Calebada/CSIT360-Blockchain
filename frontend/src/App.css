@@ -26,6 +26,12 @@
     --shadow-lift: 0 6px 16px rgba(43, 42, 37, 0.1);
 }
 
+.app-root {
+    position: relative;
+    min-height: 100vh;
+    isolation: isolate;
+}
+
 
 /* ============================================================
    Shell

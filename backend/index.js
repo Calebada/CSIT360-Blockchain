@@ -17,6 +17,7 @@ const pool = new Pool({
 app.use(cors());
 app.use(express.json());
 
+
 const initializeDatabase = async() => {
     await pool.query(`
     CREATE TABLE IF NOT EXISTS items (
